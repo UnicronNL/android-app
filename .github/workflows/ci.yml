@@ -36,11 +36,6 @@ jobs:
             ${{ runner.os }}-gradle-wrapper
       - name: Test
         run: ./gradlew testDebug testTstDebug lint
-      - name: Write key store
-        if: github.event.repository.name != 'nl-covid19-coronacheck-app-android'
-        env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
-        run: echo $KEYSTORE_FILE | base64 --decode > keystore.jks
       - name: Build
         if: github.event.repository.name != 'nl-covid19-coronacheck-app-android'
         env:
@@ -48,9 +43,6 @@ jobs:
           KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: ./gradlew assemTstRelease assemAccRelease assemProdRelease bundleProdRelease
-      - name: Clean up key store
-        if: ${{github.event.repository.name != 'nl-covid19-coronacheck-app-android'}}
-        run: rm keystore.jks   
       - name: Archive apks
         if: ${{ (github.ref == 'refs/heads/main' && github.event.repository.name != 'nl-covid19-coronacheck-app-android') || (github.event.repository.name != 'nl-covid19-coronacheck-app-android' && contains(github.head_ref, 'release-candidate')) }}
         uses: actions/upload-artifact@v2

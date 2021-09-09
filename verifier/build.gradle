@@ -35,15 +35,6 @@ android {
         buildConfigField "String", "BASE_API_URL", "\"https://verifier-api.coronacheck.nl/v4/\""
     }
 
-    signingConfigs {
-        release {
-            storeFile file('../keystore.jks')
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEYSTORE_KEY_ALIAS")
-            keyPassword System.getenv("KEYSTORE_KEY_PASSWORD")
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
