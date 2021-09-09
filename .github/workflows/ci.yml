@@ -43,10 +43,6 @@ jobs:
         run: echo $KEYSTORE_FILE | base64 --decode > keystore.jks
       - name: Build
         if: github.event.repository.name != 'nl-covid19-coronacheck-app-android'
-        env:
-          KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
-          KEYSTORE_KEY_PASSWORD: ${{ secrets.KEYSTORE_KEY_PASSWORD }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: ./gradlew assemTstRelease assemAccRelease assemProdRelease bundleProdRelease
       - name: Clean up key store
         if: ${{github.event.repository.name != 'nl-covid19-coronacheck-app-android'}}
@@ -72,10 +68,6 @@ jobs:
 
   distribute:
     if: ${{ (github.ref == 'refs/heads/main' && github.event.repository.name != 'nl-covid19-coronacheck-app-android') || (github.event.repository.name != 'nl-covid19-coronacheck-app-android' && contains(github.head_ref, 'release-candidate')) }}
-    env:
-      SLACK_WEBHOOK: ${{ secrets.SLACK_URL }}
-      SLACK_MESSAGE: 'New apps available for android :green_heart:'
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
     runs-on: ubuntu-latest
     needs: [ "build-and-test" ]
 
@@ -133,7 +125,4 @@ jobs:
           --app 1:168257592968:android:79363a1282863aac26493d \
           --token $FIREBASE_TOKEN \
           --groups testers
-
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
 
