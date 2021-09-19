@@ -81,7 +81,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/holder/build/outputs/apk/tst/release/holder-*.apk"
+          source: "android-app/apks/holder/build/outputs/apk/tst/release/holder-*.apk"
           target: "/"
 
       - name: copy file via ssh password
@@ -91,7 +91,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/holder/build/outputs/apk/acc/release/holder-*.apk"
+          source: "android-app/apks/holder/build/outputs/apk/acc/release/holder-*.apk"
           target: "/"
 
       - name: copy file via ssh password
@@ -101,7 +101,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/holder/build/outputs/apk/prod/release/holder-*.apk"
+          source: "android-app/apks/holder/build/outputs/apk/prod/release/holder-*.apk"
           target: "/"
 
       - name: copy file via ssh password
@@ -111,7 +111,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/verifier/build/outputs/apk/tst/release/verifier-*.apk"
+          source: "android-app/apks/verifier/build/outputs/apk/tst/release/verifier-*.apk"
           target: "/"
 
       - uses: appleboy/scp-action@master
@@ -120,7 +120,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/verifier/build/outputs/apk/acc/release/verifier-*.apk"
+          source: "android-app/apks/verifier/build/outputs/apk/acc/release/verifier-*.apk"
           target: "/"
 
       - uses: appleboy/scp-action@master
@@ -129,7 +129,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "apks/verifier/build/outputs/apk/prod/release/verifier-*.apk"
+          source: "android-app/apks/verifier/build/outputs/apk/prod/release/verifier-*.apk"
           target: "/"
           
 
