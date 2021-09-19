@@ -75,27 +75,27 @@ jobs:
           node-version: 10.x
           
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/holder/build/outputs/apk/tst/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/holder/build/outputs/apk/tst/release/"' }
         uses : "docker://alpine:latest"
         
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/holder/build/outputs/apk/acc/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/holder/build/outputs/apk/acc/release/"' }
         uses : "docker://alpine:latest"
         
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/holder/build/outputs/apk/prod/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/holder/build/outputs/apk/prod/release/"' }
         uses : "docker://alpine:latest"
         
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/verifier/build/outputs/apk/tst/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/verifier/build/outputs/apk/tst/release/"' }
         uses : "docker://alpine:latest"
         
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/verifier/build/outputs/apk/acc/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/verifier/build/outputs/apk/acc/release/"' }
         uses : "docker://alpine:latest"
         
       - name : container ls $GITHUB_WORKSPACE
-        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/android-app/apks/verifier/build/outputs/apk/prod/release/"' }
+        with : { entrypoint : "/bin/sh" , args : '-c "ls -la $GITHUB_WORKSPACE/apks/verifier/build/outputs/apk/prod/release/"' }
         uses : "docker://alpine:latest"
           
 
